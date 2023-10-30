@@ -1,11 +1,11 @@
 The Unnamed Keyboard is a 42-key, diodeless, flippable, low profile choc v1 (hybrid hotswap) or MX 3 pin switch, IO protected, aggressive column staggered, programmable ergonomic mechnical split keyboard powered by Rasyberry Pi Pico or other compatible RP2040 boards. It is based on the [Piantor](https://github.com/beekeeb/piantor) Keyboard. 
 ## Features
 
-* RP2040 MCU with Raspberry Pi Pico power
+* Powered by RP2040 MCU with Raspberry Pi Pico
 * Cantor & Corne like layout
 * Flippable layout
 * Diodeless
-* split hand pin for automatically left hand detection, single firmware for both sides
+* Split hand pin for automatically left hand detection, single firmware for both sides
 * TRRS with resistor protection, hot-plug no damage 
 * Hybrid hotswap: low profile choc switches and MX switches(3pin)
 
