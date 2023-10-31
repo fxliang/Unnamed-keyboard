@@ -26,4 +26,4 @@ bottom left(ignore the TRRS connector and pico:)
 pcb top
 ![pcb top](images/top-left-pcb.png)
 pcb bottom
-![pcb bottom](images/top-left-pcb.png)
+![pcb bottom](images/bottom-left-pcb.png)
