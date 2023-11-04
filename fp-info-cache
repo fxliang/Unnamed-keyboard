@@ -1,4 +1,4 @@
-2170755666348172
+2167446034779708
 Battery
 BatteryClip_Keystone_54_D16-19mm
 Battery clip for batteries with a diameter between 16-19 mm: https://www.keyelco.com/product.cfm/product_id/826
@@ -8952,20 +8952,6 @@ Logo WEEE
 0
 0
 0
-switch
-Kailh_socket_MX
-MX-style keyswitch with Kailh socket mount
-MX,cherry,gateron,kailh,pg1511,socket
-0
-2
-2
-switch
-SW_Hotswap_Kailh_Choc_V1
-Kailh Choc keyswitch CPG1350 V1 CPG1353 V2 Hotswap
-Kailh Choc Keyswitch Switch CPG1350 V1 CPG1353 V2 Hotswap Cutout
-0
-2
-2
 switch
 SW_Hotswap_Kailh_Choc_V1_MX_COMBO
 Kailh Choc keyswitch CPG1350 V1 CPG1353 V2 Hotswap

@@ -1,15 +1,33 @@
-$fn = 1000;
+$fn = 500;
 pcb_edge_file = "dxfs/unnamed-Edge_Cuts.dxf";
+// board parameters, unit: mm
 socket_1350_thickness = 1.8;
 solder_thickness = 0.2;
 board_thickness = 1.6;
 shell_thickness = 2.5;
 asm_gap = 0.5;
-total_case_height = shell_thickness + socket_1350_thickness + solder_thickness + board_thickness + asm_gap;
-shell_diff_height = total_case_height;
-case_width = (asm_gap+shell_thickness)*2 + 140;
-offset_base_pcb = shell_thickness + asm_gap;
+// case cut info, top left 0, 0
+type_c_cut_x = 133.5;
+type_c_cut_y = -61.5;
+type_c_cut_width = 15.8;
+type_c_cut_height = 13;
+trrs_cut_x = 119;
+trrs_cut_y = 0;
+trrs_cut_width = 16;
+trrs_cut_height = 10;
+// board info
+board_width = 140;
+board_height = 95.0130;
+// gap between two cases
+case_gap_l2r = 4;
+// ----------------------------------------------------------------------------
 
+total_case_height = shell_thickness + socket_1350_thickness + solder_thickness 
++ board_thickness + asm_gap;
+shell_diff_height = total_case_height;
+case_width = (asm_gap+shell_thickness)*2 + board_width;
+offset_base_pcb = shell_thickness + asm_gap;
+// ----------------------------------------------------------------------------
 // case outline with offset 
 module offset_shape() {
   offset(r=offset_base_pcb) import(pcb_edge_file);
@@ -36,16 +54,16 @@ module shell_diff() {
 }
 // type_c connector cut
 module type_c_diff() {
-  translate([119, -13, shell_thickness])
-  cube([15.8, 13, total_case_height]);
+  translate([type_c_cut_x, type_c_cut_y - type_c_cut_height, shell_thickness])
+  cube([type_c_cut_width, type_c_cut_height, total_case_height]);
 }
 
 // trrs connector cut
 module trrs_diff() {
-  translate([133.5, -61.5, shell_thickness])
+  translate([trrs_cut_x, trrs_cut_y, shell_thickness])
   // mirror y axis
   mirror([0, -1, 0])
-  cube([16, 10, total_case_height]);
+  cube([trrs_cut_width, trrs_cut_height, total_case_height]);
 }
 
 // shell case difference by  base() and shell_diff()
@@ -70,8 +88,8 @@ module left_case() {
 
 // right case
 module right_case() {
-  // move to the right, add 2mm
-  translate([case_width*2 + 2, 0, 0])
+  // move to the right, add case_gap_l2r
+  translate([case_width*2 + case_gap_l2r, 0, 0])
   // mirror x axis
   mirror([-1,0,0])
   // left case
