@@ -13,7 +13,7 @@ The Unnamed Keyboard is a 42-key, diodeless, flippable, low profile choc v1 or M
 * Raspberry Pi Pico (or compatible one) * 2
 * choc swtiches / MX(3pin) switches * 42
 * hotswap sockets for choc swtiches / MX(3pin) switches * 42
-* TRRS sockets * 2, C128990(JLC)
+* TRRS sockets * 2, C128990(JLC),or PJ-393-7P in tb.
 * 3.5mm TRRS wire (4 pin)
 * 100r 0805 resistor * 4 (for io protection)
 * 1k 0805 resistor *  2 (for hand pin detection)
