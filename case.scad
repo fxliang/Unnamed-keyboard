@@ -1,11 +1,11 @@
-$fn = 500;
+$fn = 256;
 pcb_edge_file = "dxfs/unnamed-Edge_Cuts.dxf";
 // board parameters, unit: mm
 socket_1350_thickness = 1.8;
 solder_thickness = 0.2;
 board_thickness = 1.6;
 shell_thickness = 2.5;
-asm_gap = 0.5;
+asm_gap = 0.2;
 // case cut info, top left 0, 0
 type_c_cut_x = 133.5;
 type_c_cut_y = -61.5;
@@ -79,11 +79,55 @@ module shell_shape() {
   }
 }
 
+module mount_poles() {
+  translate([19.1, -31.6, shell_thickness]) {
+    cylinder(h = socket_1350_thickness + solder_thickness, r = shell_thickness);
+  }
+  translate([19.1, -50.5, shell_thickness]) {
+    cylinder(h = socket_1350_thickness + solder_thickness, r = shell_thickness);
+  }
+  translate([67.0, -59.5, shell_thickness]) {
+    cylinder(h = socket_1350_thickness + solder_thickness, r = shell_thickness);
+  }
+  translate([95.9, -27.6, shell_thickness]) {
+    cylinder(h = socket_1350_thickness + solder_thickness, r = shell_thickness);
+  }
+  translate([126.5, -27.6, shell_thickness]) {
+    cylinder(h = socket_1350_thickness + solder_thickness, r = shell_thickness);
+  }
+  translate([123, -73.5, shell_thickness]) {
+    cylinder(h = socket_1350_thickness + solder_thickness, r = shell_thickness);
+  }
+}
+module mount_holes() {
+  translate([19.1, -31.6, -shell_thickness]) {
+    cylinder(h = total_case_height*2, r = 1);
+  }
+  translate([19.1, -50.5, -shell_thickness]) {
+    cylinder(h = total_case_height*2, r = 1);
+  }
+  translate([67.0, -59.5, -shell_thickness]) {
+    cylinder(h = total_case_height*2, r = 1);
+  }
+  translate([95.9, -27.6, -shell_thickness]) {
+    cylinder(h = total_case_height*2, r = 1);
+  }
+  translate([123, -73.5, -shell_thickness]) {
+    cylinder(h = total_case_height*2, r = 1);
+  }
+}
 // left case
 module left_case() {
   // move the left of case to x = 0
-  translate([(shell_thickness + asm_gap), 0, 0])
-  shell_shape();
+  difference() {
+    translate([(shell_thickness + asm_gap), 0, 0]){
+        mount_poles();
+        shell_shape();
+    }
+    translate([(shell_thickness + asm_gap), 0, 0]){
+        mount_holes();
+    }
+  }
 }
 
 // right case
@@ -95,7 +139,6 @@ module right_case() {
   // left case
   left_case();
 }
-
 // use modules
 left_case();
 right_case();
